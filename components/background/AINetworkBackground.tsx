@@ -90,6 +90,7 @@ function NetworkNodes({ theme }: { theme: "dark" | "light" }) {
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
+            args={[positions, 3]}
             count={PARTICLE_COUNT}
             array={positions}
             itemSize={3}
