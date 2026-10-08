@@ -1,4 +1,24 @@
-export const projects = [
+export interface ProjectNode {
+  id: number;
+  x: number;
+  y: number;
+  label: string;
+  desc: string;
+}
+
+export interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  color: string;
+  github: string;
+  demo: string | null;
+  video?: string;
+  highlights: string[];
+  graphNodes?: ProjectNode[];
+}
+
+export const projects: Project[] = [
   {
     title: "Medical Report Analyzer",
     description: "AI-powered health/medical report analysis system designed to make health information easier to understand.",
