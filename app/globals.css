@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Mode - Premium AI Studio */
+    --background: 210 40% 98%;
+    --surface: 0 0% 100%;
+    --text-primary: 226 47% 8%;
+    --text-secondary: 215 16% 47%;
+    
+    --primary: 221 83% 53%;
+    --secondary: 243 75% 59%;
+    --accent: 188 86% 53%;
+    --border: 222 47% 11%;
+    --border-opacity: 0.1;
+  }
+
+  .dark {
+    /* Dark Mode - AI Laboratory */
+    --background: 225 45% 4%;
+    --surface: 226 47% 8%;
+    --text-primary: 0 0% 100%;
+    --text-secondary: 215 20% 65%;
+    
+    --primary: 217 91% 60%;
+    --secondary: 258 90% 66%;
+    --accent: 189 94% 65%;
+    --border: 0 0% 100%;
+    --border-opacity: 0.1;
+  }
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--text-primary));
+}
+
+/* Hide cursor on desktop for custom cursor */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a, button, [role="button"], input, select, textarea {
+    cursor: none;
+  }
+}
+
+/* Base reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.theme-transitioning {
+  pointer-events: none !important;
+}
+
+@layer utilities {
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+  }
+}
