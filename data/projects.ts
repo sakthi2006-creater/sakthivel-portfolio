@@ -14,6 +14,8 @@ export interface Project {
   github: string;
   demo: string | null;
   video?: string;
+  featured?: boolean;
+  domain?: string;
   highlights: string[];
   graphNodes?: ProjectNode[];
 }
