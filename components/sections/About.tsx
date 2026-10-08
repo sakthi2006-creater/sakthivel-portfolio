@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import { personalInfo } from "@/data/portfolio";
 
 type Stat = {
@@ -122,10 +123,12 @@ export default function About() {
                 {/* 3D Animated Photo container */}
                 <div className="relative w-28 h-28 shrink-0 rounded-xl overflow-hidden border border-neon-cyan/40 bg-black/50 shadow-[0_0_25px_rgba(39,247,255,0.2)] group">
                   <div className="absolute inset-0 bg-noise bg-repeat opacity-20 z-10 pointer-events-none mix-blend-overlay" />
-                  <img 
+                  <Image 
                     src="/profile.png" 
                     alt="Sakthivel R" 
-                    className="w-full h-full object-cover object-top scale-[1.15] transition-transform duration-700 group-hover:scale-100 filter contrast-125 grayscale-[20%]"
+                    fill
+                    sizes="(max-width: 768px) 150px, 150px"
+                    className="object-cover object-top scale-[1.15] transition-transform duration-700 group-hover:scale-100 filter contrast-125 grayscale-[20%]"
                   />
                   {/* Glitch/Scan Overlay on photo */}
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neon-cyan/10 to-neon-purple/20 mix-blend-color z-10" />

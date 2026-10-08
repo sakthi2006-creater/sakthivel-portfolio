@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { achievements, AchievementData } from "@/data/achievements";
 import { X, Search, ChevronRight, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Group achievements by year for the rail
 const groupedAchievements = achievements.reduce((acc, curr) => {
@@ -114,9 +115,9 @@ export function AchievementMuseum() {
               <div className="text-[10px] tracking-[0.3em] mb-4 uppercase" style={{ color: activeItem.color }}>ACHIEVEMENT DISCOVERED</div>
               <h3 className="text-2xl font-black mb-8 uppercase leading-snug">{activeItem.title}</h3>
               
-              <div className="w-full min-h-[300px] border border-white/10 bg-black/50 flex flex-col items-center justify-center p-6 rounded-lg shadow-2xl">
+              <div className="w-full min-h-[300px] h-[50vh] relative border border-white/10 bg-black/50 flex flex-col items-center justify-center p-6 rounded-lg shadow-2xl">
                 {activeItem.evidenceUrl ? (
-                  <img src={activeItem.evidenceUrl} alt="Evidence" className="max-w-full h-auto" />
+                  <Image src={activeItem.evidenceUrl} alt="Evidence" fill sizes="100vw" className="object-contain p-6" />
                 ) : (
                   <div className="flex flex-col items-center text-zinc-600">
                     <Search className="mb-4 opacity-20" size={32} />
@@ -379,7 +380,9 @@ export function AchievementMuseum() {
                 </div>
                 
                 {activeItem.evidenceUrl ? (
-                  <img src={activeItem.evidenceUrl} alt="Evidence" className="max-w-full max-h-[70vh] object-contain shadow-2xl" />
+                  <div className="relative w-full h-full max-h-[70vh] mt-16">
+                    <Image src={activeItem.evidenceUrl} alt="Evidence" fill sizes="50vw" className="object-contain shadow-2xl" />
+                  </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center border-2 border-dashed border-white/10 bg-white/[0.02] w-full max-w-2xl aspect-video rounded-xl">
                     <Search className="mb-6 opacity-20" size={48} />

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function ProfileSection() {
   return (
@@ -46,10 +47,12 @@ export function ProfileSection() {
                   <div className="absolute inset-0 bg-noise bg-repeat opacity-30 z-10 pointer-events-none mix-blend-overlay" />
                   
                   {/* The Image with Grayscale + High Contrast for Cyberpunk vibe */}
-                  <img 
+                  <Image 
                     src="/profile.png" 
-                    alt="Sakthivel R" 
-                    className="w-full h-full object-cover scale-[1.15] transition-transform duration-1000 group-hover:scale-125 filter grayscale contrast-125 brightness-90"
+                    alt="Sakthivel R"
+                    fill
+                    sizes="(max-width: 768px) 250px, 300px"
+                    className="object-cover scale-[1.15] transition-transform duration-1000 group-hover:scale-125 filter grayscale contrast-125 brightness-90"
                   />
                   
                   {/* Glowing Cyan Color Tint over the photo */}

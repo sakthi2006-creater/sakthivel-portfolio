@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { Play } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface ProjectVideoPreviewProps {
   videoSrc?: string;
@@ -34,10 +35,12 @@ export function ProjectVideoPreview({ videoSrc, imageSrc, title, category }: Pro
     if (imageSrc) {
       return (
         <div className="w-full h-full aspect-video rounded-2xl relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5 group">
-          <img 
+          <Image 
             src={imageSrc} 
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>

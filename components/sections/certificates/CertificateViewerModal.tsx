@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ZoomIn, ZoomOut, ArrowLeft, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 interface CertificateViewerModalProps {
   imageSrc: string;
@@ -80,25 +81,22 @@ export function CertificateViewerModal({
 
           {/* Image Container */}
           <motion.div 
-            className="relative max-w-[90vw] max-h-[90vh] cursor-grab active:cursor-grabbing"
+            className="relative w-[90vw] h-[80vh] cursor-grab active:cursor-grabbing"
             onClick={(e) => e.stopPropagation()}
             drag
             dragConstraints={{ top: -200, bottom: 200, left: -200, right: 200 }}
             dragElastic={0.1}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale, transition: { duration: 0.3 } }}
+            exit={{ opacity: 0, scale: 0.9 }}
           >
-            <motion.img
-              key={imageSrc} // forces re-render on change
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale, transition: { duration: 0.3 } }}
-              exit={{ opacity: 0, scale: 0.9 }}
+            <Image
+              key={imageSrc}
               src={imageSrc}
               alt="Fullscreen Certificate"
-              className="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.1)]"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                if (target.src.endsWith('.jpeg')) target.src = target.src.replace('.jpeg', '.jpg');
-                else if (target.src.endsWith('.jpg')) target.src = target.src.replace('.jpg', '.png');
-              }}
+              fill
+              sizes="100vw"
+              className="object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.1)] pointer-events-none"
             />
           </motion.div>
         </motion.div>
